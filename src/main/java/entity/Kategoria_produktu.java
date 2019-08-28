@@ -14,10 +14,10 @@ public class Kategoria_produktu {
     @Column
     private String nazwa;
 
-    @OneToMany(cascade = CascadeType.ALL)
-
+    @OneToMany (mappedBy = "id_kategorii")
     //Strona posiadajaca relacje
     private Produkt produkt;
+
 
     public Kategoria_produktu() {
     }
@@ -38,11 +38,5 @@ public class Kategoria_produktu {
         this.nazwa = nazwa;
     }
 
-    public Produkt getProdukt() {
-        return produkt;
-    }
-
-    public void setProdukt(Produkt produkt) {
-        this.produkt = produkt;
-    }
 }
+

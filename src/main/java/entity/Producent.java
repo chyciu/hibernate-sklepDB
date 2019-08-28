@@ -14,8 +14,7 @@ public class Producent {
     @Column
     private String nazwa;
 
-    @ManyToMany
-    @JoinColumn(name = "id_producenta")
+    @OneToMany(mappedBy = "id_producenta")
     private Produkt produkt;
 
 

@@ -19,10 +19,8 @@ public class Klient {
     @Column
     private String telefon;
 
-
     public Klient() {
     }
-
 
     public long getId_klient() {
         return id_klient;

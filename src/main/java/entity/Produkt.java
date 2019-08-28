@@ -16,7 +16,12 @@ public class Produkt {
     @Column
     private String cena;
 
-    @ManyToOne
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_producenta")
+    private Producent producent;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_kategorii")
     private Kategoria_produktu kategoria_produktu;
 
@@ -46,5 +51,22 @@ public class Produkt {
 
     public void setCena(String cena) {
         this.cena = cena;
+    }
+
+
+    public Producent getProducent() {
+        return producent;
+    }
+
+    public void setProducent(Producent producent) {
+        this.producent = producent;
+    }
+
+    public Kategoria_produktu getKategoria_produktu() {
+        return kategoria_produktu;
+    }
+
+    public void setKategoria_produktu(Kategoria_produktu kategoria_produktu) {
+        this.kategoria_produktu = kategoria_produktu;
     }
 }

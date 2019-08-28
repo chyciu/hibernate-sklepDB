@@ -24,6 +24,7 @@ public class Adres {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_klient", unique = true)
+
     //Strona posiadajaca relacje
     private Klient klient;
 
