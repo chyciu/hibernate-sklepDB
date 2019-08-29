@@ -26,7 +26,7 @@ public class Klient {
 
     @ManyToMany
     @JoinTable (name = "klient_produkt",
-        joinColumns = @JoinColumn (name = "id-klienta"),
+        joinColumns = @JoinColumn (name = "id_klienta"),
         inverseJoinColumns = @JoinColumn (name = "id_produkt"))
     private List <Produkt> produkty;
 
@@ -80,10 +80,9 @@ public class Klient {
         return produkty;
     }
 
-    public Klient(String imie, String nazwisko, String telefon, Adres adres) {
+    public Klient(String imie, String nazwisko, String telefon) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.telefon = telefon;
-        this.adres = adres;
     }
 }

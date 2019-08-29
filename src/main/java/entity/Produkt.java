@@ -17,11 +17,11 @@ public class Produkt {
     @Column (name = "cena")
     private Double cena;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_producenta")
     private Producent producent;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_kategorii")
     private Kategoria_produktu kategoria_produktu;
 
