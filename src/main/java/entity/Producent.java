@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(schema = "sklep", name = "producent")
@@ -9,13 +10,13 @@ public class Producent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column (name = "id_producenta")
     private long id_producenta;
-    @Column
+    @Column (name = "nazwa")
     private String nazwa;
 
-    @OneToMany(mappedBy = "id_producenta")
-    private Produkt produkt;
+    @OneToMany(mappedBy = "producent")
+    private List<Produkt> produkty;
 
 
     public Producent() {
@@ -34,6 +35,10 @@ public class Producent {
     }
 
     public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
+
+    public Producent(String nazwa) {
         this.nazwa = nazwa;
     }
 }

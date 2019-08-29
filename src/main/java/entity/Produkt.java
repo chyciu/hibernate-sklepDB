@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(schema = "sklep", name = "produkt")
@@ -9,21 +10,23 @@ public class Produkt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column (name = "id_produktu")
     private long id_produktu;
-    @Column
+    @Column (name = "nazwa")
     private String nazwa;
-    @Column
-    private String cena;
+    @Column (name = "cena")
+    private Double cena;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_producenta")
     private Producent producent;
 
-
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_kategorii")
     private Kategoria_produktu kategoria_produktu;
+
+    @ManyToMany (mappedBy = "produkty")
+    private List<Klient> klienci;
 
 
     public Produkt() {
@@ -45,11 +48,11 @@ public class Produkt {
         this.nazwa = nazwa;
     }
 
-    public String getCena() {
+    public Double getCena() {
         return cena;
     }
 
-    public void setCena(String cena) {
+    public void setCena(Double cena) {
         this.cena = cena;
     }
 
@@ -67,6 +70,13 @@ public class Produkt {
     }
 
     public void setKategoria_produktu(Kategoria_produktu kategoria_produktu) {
+        this.kategoria_produktu = kategoria_produktu;
+    }
+
+    public Produkt(String nazwa, Double cena, Producent producent, Kategoria_produktu kategoria_produktu) {
+        this.nazwa = nazwa;
+        this.cena = cena;
+        this.producent = producent;
         this.kategoria_produktu = kategoria_produktu;
     }
 }

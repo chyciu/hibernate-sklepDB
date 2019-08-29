@@ -9,24 +9,24 @@ public class Adres {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column (name = "id_adres")
     private long id_adres;
-    @Column
+    @Column (name = "ulica")
     private String ulica;
-    @Column
+    @Column (name = "nr_domu")
     private String nrDomu;
-    @Column
+    @Column (name = "nr_mieszkania")
     private String nrMieszkania;
-    @Column
+    @Column (name = "kod_pocztowy")
     private String kodPocztowy;
-    @Column
+    @Column (name = "miejscowosc")
     private String miejscowosc;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "id_klient", unique = true)
-
     //Strona posiadajaca relacje
     private Klient klient;
+
 
     public Adres() {
     }
@@ -86,6 +86,15 @@ public class Adres {
 
     public void setKlient(Klient klient) {
         this.klient = klient;
+    }
+
+
+    public Adres(String ulica, String nrDomu, String nrMieszkania, String kodPocztowy, String miejscowosc) {
+        this.ulica = ulica;
+        this.nrDomu = nrDomu;
+        this.nrMieszkania = nrMieszkania;
+        this.kodPocztowy = kodPocztowy;
+        this.miejscowosc = miejscowosc;
     }
 }
 

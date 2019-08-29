@@ -1,6 +1,8 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(schema = "sklep", name = "klient")
@@ -10,14 +12,23 @@ public class Klient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column (name = "id_klient")
     private long id_klient;
-    @Column
+    @Column (name = "imie")
     private String imie;
-    @Column
+    @Column (name = "nazwisko")
     private String nazwisko;
-    @Column
+    @Column (name = "telefon")
     private String telefon;
+
+    @OneToOne (mappedBy = "klient", cascade = CascadeType.ALL)
+    private Adres adres;
+
+    @ManyToMany
+    @JoinTable (name = "klient_produkt",
+        joinColumns = @JoinColumn (name = "id-klienta"),
+        inverseJoinColumns = @JoinColumn (name = "id_produkt"))
+    private List <Produkt> produkty;
 
     public Klient() {
     }
@@ -52,5 +63,27 @@ public class Klient {
 
     public void setTelefon(String telefon) {
         this.telefon = telefon;
+    }
+
+    public Adres getAdres() {
+        return adres;
+    }
+
+    public void setAdres(Adres adres) {
+        this.adres = adres;
+    }
+
+    public List<Produkt> getProdukty() {
+        if (produkty == null) {
+            produkty = new ArrayList<Produkt>();
+        }
+        return produkty;
+    }
+
+    public Klient(String imie, String nazwisko, String telefon, Adres adres) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.telefon = telefon;
+        this.adres = adres;
     }
 }

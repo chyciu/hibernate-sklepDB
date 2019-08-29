@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(schema = "sklep", name = "kategoria_produktu")
@@ -9,14 +10,14 @@ public class Kategoria_produktu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column (name = "id_kategorii")
     private long id_kategorii;
-    @Column
+    @Column (name = "nazwa")
     private String nazwa;
 
-    @OneToMany (mappedBy = "id_kategorii")
+    @OneToMany (mappedBy = "kategoria_produktu")
     //Strona posiadajaca relacje
-    private Produkt produkt;
+    private List<Produkt> produkt;
 
 
     public Kategoria_produktu() {
@@ -38,5 +39,8 @@ public class Kategoria_produktu {
         this.nazwa = nazwa;
     }
 
+    public Kategoria_produktu(String nazwa) {
+        this.nazwa = nazwa;
+    }
 }
 
