@@ -32,14 +32,6 @@ public class Main {
         Producent producent1 = new Producent("MazuryBike");
         Producent producent2 = new Producent("VIP");
 
-        //przypisujemy adresy do klientów
-
-        adres1.setKlient(klient1);
-        adres2.setKlient(klient2);
-        adres3.setKlient(klient3);
-        adres4.setKlient(klient4);
-        adres5.setKlient(klient5);
-
         //tworzymy 10 produktów
 
         Produkt produkt1 = new Produkt("Wigry", 2344.0, producent1, kategoria1);
@@ -52,6 +44,15 @@ public class Main {
         Produkt produkt8 = new Produkt("SpeedBird", 1500000.0, producent2, kategoria3);
         Produkt produkt9 = new Produkt("Kolarz", 12000.0, producent1, kategoria1);
         Produkt produkt10 = new Produkt("BoyBike", 900.0, producent1, kategoria1);
+
+        //przypisujemy adresy do klientów
+
+        adres1.setKlient(klient1);
+        adres2.setKlient(klient2);
+        adres3.setKlient(klient3);
+        adres4.setKlient(klient4);
+        adres5.setKlient(klient5);
+
 
         //tworzymy 15 rekrów do listy produktów - tabela łaczoca klienta z produktem
 
@@ -75,18 +76,12 @@ public class Main {
         klient5.getProdukty().add(produkt5);
         klient5.getProdukty().add(produkt5);
 
-        sklepCRUD.createNewObject(klient1);
-        sklepCRUD.createNewObject(klient2);
-        sklepCRUD.createNewObject(klient3);
-        sklepCRUD.createNewObject(klient4);
-        sklepCRUD.createNewObject(klient5);
+        sklepCRUD.createNewObject(producent1);
+        sklepCRUD.createNewObject(producent2);
 
         sklepCRUD.createNewObject(kategoria1);
         sklepCRUD.createNewObject(kategoria2);
         sklepCRUD.createNewObject(kategoria3);
-
-        sklepCRUD.createNewObject(producent1);
-        sklepCRUD.createNewObject(producent2);
 
         sklepCRUD.createNewObject(produkt1);
         sklepCRUD.createNewObject(produkt2);
@@ -100,6 +95,17 @@ public class Main {
         sklepCRUD.createNewObject(produkt9);
         sklepCRUD.createNewObject(produkt10);
 
+        sklepCRUD.createNewObject(klient1);
+        sklepCRUD.createNewObject(klient2);
+        sklepCRUD.createNewObject(klient3);
+        sklepCRUD.createNewObject(klient4);
+        sklepCRUD.createNewObject(klient5);
+
+        sklepCRUD.createNewObject(adres1);
+        sklepCRUD.createNewObject(adres2);
+        sklepCRUD.createNewObject(adres3);
+        sklepCRUD.createNewObject(adres4);
+        sklepCRUD.createNewObject(adres5);
 
     }
 }
